@@ -127,4 +127,4 @@ let requestApi = (~url, ~responseType) => {
 }
 ```
 
-> Don't forget to the use the `propagateCancel` option so that calling `Future.cancel` on the `requestApi` return value aborts the request!
+> Don't forget to use the `propagateCancel` option so that calling `Future.cancel` on the `requestApi` return value aborts the request!
