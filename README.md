@@ -32,7 +32,6 @@ Request.make(~url="/api/health", ())
 //   status: 200,
 //   ok: true,
 //   response: "{\"ok\":true}",
-//   responseText: "{\"ok\":true}",
 // })
 
 Request.make(~url="/api/health", ~responseType=Text, ())
@@ -49,7 +48,6 @@ Request.make(~url="/api/health", ~responseType=Json, ())
 //   status: 200,
 //   ok: true,
 //   response: {"ok":true},
-//   responseText: "{\"ok\":true}",
 // })
 
 type response = {"ok": bool}
@@ -64,7 +62,6 @@ Request.make(
 //   status: 200,
 //   ok: true,
 //   response: {"ok":true},
-//   responseText: "{\"ok\":true}",
 // })
 ```
 
@@ -93,7 +90,6 @@ The response is a record containing:
 - `status`: `int`
 - `ok`: `bool`
 - `response`: the decoded response, which is an `option`
-- `responseText`: the serialized response
 
 ### Errors
 
