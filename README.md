@@ -26,7 +26,7 @@ Then add `rescript-request` and `rescript-future` to your `bsconfig.json`'s `bs-
 `Request.make` performs a request and returns a [`Future.t`](https://github.com/bloodyowl/rescript-future) containing a `result<response, error>`.
 
 ```reason
-Request.make(~url="/api/health", ())
+Request.make(~url="/api/health", ~responseType=Text, ())
   ->Future.get(Js.log)
 // Ok({
 //   status: 200,
