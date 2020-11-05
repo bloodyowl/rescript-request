@@ -32,6 +32,6 @@
     "reason-test-framework": "^0.3.2"
   },
   "dependencies": {
-    "rescript-future": "^1.0.2"
+    "rescript-future": "^1.0.3"
   }
 }
