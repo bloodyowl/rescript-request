@@ -1,3 +1,9 @@
+# 1.1.0
+
+Fixes:
+
+- Upgrade future (743898c)
+
 # 1.0.2
 
 Fixes:
