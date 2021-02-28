@@ -17,6 +17,6 @@
     "rescript-test": "^0.6.3"
   },
   "dependencies": {
-    "rescript-future": "^1.0.4"
+    "rescript-future": "^1.1.0"
   }
 }
