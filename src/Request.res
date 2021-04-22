@@ -127,6 +127,8 @@ let make = (
   Future.make(resolve => {
     open XMLHttpRequest
     let xhr: t<option<body>, payload> = make()
+    xhr->setWithCredentials(withCredentials)
+    xhr->\"open"(method, url)
     // Let's not allow synchronous calls
     // That conditions the returned type using a GADT
     xhr->setResponseType(
@@ -143,8 +145,6 @@ let make = (
     | Some(timeout) => xhr->setTimeout(timeout)
     | None => ()
     }
-    xhr->setWithCredentials(withCredentials)
-    xhr->\"open"(method, url)
     switch headers {
     | Some(headers) => headers->Js.Dict.entries->Js.Array2.forEach(((key, value)) => {
         xhr->setRequestHeader(key, value)
