@@ -1,3 +1,9 @@
+# 1.1.1
+
+Fixes:
+
+- Move responseType setter (5715ec9)
+
 # 1.1.0
 
 Fixes:
