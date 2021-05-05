@@ -1,3 +1,9 @@
+# 2.0.0
+
+Changes:
+
+- Expose XHR in response (aa22443)
+
 # 1.1.1
 
 Fixes:
