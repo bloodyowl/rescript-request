@@ -12,10 +12,13 @@ type error = [#NetworkRequestFailed | #Timeout]
 
 type method = [#GET | #POST | #OPTIONS | #PATCH | #PUT | #DELETE]
 
+type xhr
+
 type response<'a> = {
   status: int,
   ok: bool,
   response: option<'a>,
+  xhr: xhr,
 }
 
 type progressEvent = {

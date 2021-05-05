@@ -105,10 +105,14 @@ module XMLHttpRequest = {
   external setWithCredentials: (t<'input, 'responseType>, bool) => unit = "withCredentials"
 }
 
+type xhr
+external asXhr: 'a => xhr = "%identity"
+
 type response<'a> = {
   status: int,
   ok: bool,
   response: option<'a>,
+  xhr: xhr,
 }
 
 let make = (
@@ -196,6 +200,7 @@ let make = (
           status: status,
           ok: status >= 200 && status < 300,
           response: response,
+          xhr: xhr->asXhr,
         }),
       )
     }
