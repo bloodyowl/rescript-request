@@ -18,7 +18,7 @@
   },
   "bs-dependencies": ["rescript-future"],
   "bs-dev-dependencies": ["rescript-test"],
-  "suffix": ".bs.js",
+  "suffix": ".mjs",
   "warnings": {
     "error": "+101"
   }

@@ -2,10 +2,10 @@
   "name": "rescript-request",
   "version": "2.0.0",
   "scripts": {
-    "clean": "bsb -clean-world",
-    "build": "bsb -make-world",
-    "watch": "bsb -make-world -w",
-    "test": "retest --with-dom test/*.bs.js"
+    "clean": "rescript clean",
+    "build": "rescript",
+    "watch": "rescript build -with-deps -w",
+    "test": "retest --with-dom test/*.mjs"
   },
   "keywords": [
     "BuckleScript"
@@ -13,10 +13,10 @@
   "author": "bloodyowl <bloodyowl@icloud.com>",
   "license": "MIT",
   "devDependencies": {
-    "bs-platform": "^8.3.2",
-    "rescript-test": "^0.6.3"
+    "rescript": "^9.1.4",
+    "rescript-test": "^3.0.0"
   },
   "dependencies": {
-    "rescript-future": "^1.1.0"
+    "rescript-future": "^2.0.0"
   }
 }

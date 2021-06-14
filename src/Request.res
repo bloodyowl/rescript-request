@@ -21,87 +21,80 @@ type progressEvent = {
 
 module XMLHttpRequest = {
   type t<'input, 'responseType>
-  @bs.new external make: unit => t<'input, 'responseType> = "XMLHttpRequest"
-  @bs.send
-  external \"open": (t<'input, 'responseType>, method, string, @bs.as(json`true`) _) => unit =
-    "open"
-  @bs.set
+  @new external make: unit => t<'input, 'responseType> = "XMLHttpRequest"
+  @send
+  external \"open": (t<'input, 'responseType>, method, string, @as(json`true`) _) => unit = "open"
+  @set
   external setResponseType: (t<'input, 'responseType>, string) => unit = "responseType"
-  @bs.set
+  @set
   external setTimeout: (t<'input, 'responseType>, int) => unit = "timeout"
-  @bs.send
+  @send
   external setRequestHeader: (t<'input, 'responseType>, string, string) => unit = "setRequestHeader"
-  @bs.send external send: (t<'input, 'responseType>, 'input) => unit = "send"
-  @bs.send external abort: t<'input, 'responseType> => unit = "abort"
-  @bs.get external status: t<'input, 'responseType> => int = "status"
-  @bs.get external responseText: t<'input, 'responseType> => string = "responseText"
-  @bs.get
+  @send external send: (t<'input, 'responseType>, 'input) => unit = "send"
+  @send external abort: t<'input, 'responseType> => unit = "abort"
+  @get external status: t<'input, 'responseType> => int = "status"
+  @get external responseText: t<'input, 'responseType> => string = "responseText"
+  @get
   external response: t<'input, 'responseType> => Js.Nullable.t<'responseType> = "response"
-  @bs.send
-  external addLoadEventListener: (
-    t<'input, 'responseType>,
-    @bs.as("load") _,
-    unit => unit,
-  ) => unit = "addEventListener"
-  @bs.send
+  @send
+  external addLoadEventListener: (t<'input, 'responseType>, @as("load") _, unit => unit) => unit =
+    "addEventListener"
+  @send
   external removeLoadEventListener: (
     t<'input, 'responseType>,
-    @bs.as("load") _,
+    @as("load") _,
     unit => unit,
   ) => unit = "removeEventListener"
-  @bs.send
-  external addErrorEventListener: (
-    t<'input, 'responseType>,
-    @bs.as("error") _,
-    unit => unit,
-  ) => unit = "addEventListener"
-  @bs.send
+  @send
+  external addErrorEventListener: (t<'input, 'responseType>, @as("error") _, unit => unit) => unit =
+    "addEventListener"
+  @send
   external removeErrorEventListener: (
     t<'input, 'responseType>,
-    @bs.as("error") _,
+    @as("error") _,
     unit => unit,
   ) => unit = "removeEventListener"
 
-  @bs.send
+  @send
   external addTimeoutEventListener: (
     t<'input, 'responseType>,
-    @bs.as("timeout") _,
+    @as("timeout") _,
     unit => unit,
   ) => unit = "addEventListener"
-  @bs.send
+  @send
   external removeTimeoutEventListener: (
     t<'input, 'responseType>,
-    @bs.as("timeout") _,
+    @as("timeout") _,
     unit => unit,
   ) => unit = "removeEventListener"
 
-  @bs.send
+  @send
   external addLoadStartEventListener: (
     t<'input, 'responseType>,
-    @bs.as("loadstart") _,
+    @as("loadstart") _,
     progressEvent => unit,
   ) => unit = "addEventListener"
-  @bs.send
+  @send
   external removeLoadStartEventListener: (
     t<'input, 'responseType>,
-    @bs.as("loadstart") _,
+    @as("loadstart") _,
     progressEvent => unit,
   ) => unit = "removeEventListener"
 
-  @bs.send
+  @send
   external addProgressEventListener: (
     t<'input, 'responseType>,
-    @bs.as("progress") _,
+    @as("progress") _,
     progressEvent => unit,
   ) => unit = "addEventListener"
-  @bs.send
+  @send
   external removeProgressEventListener: (
     t<'input, 'responseType>,
-    @bs.as("progress") _,
+    @as("progress") _,
     progressEvent => unit,
   ) => unit = "removeEventListener"
 
-  @bs.set
+  @set
   external setWithCredentials: (t<'input, 'responseType>, bool) => unit = "withCredentials"
 }
 
@@ -150,7 +143,10 @@ let make = (
     | None => ()
     }
     switch headers {
-    | Some(headers) => headers->Js.Dict.entries->Js.Array2.forEach(((key, value)) => {
+    | Some(headers) =>
+      headers
+      ->Js.Dict.entries
+      ->Js.Array2.forEach(((key, value)) => {
         xhr->setRequestHeader(key, value)
       })
     | None => ()
@@ -181,13 +177,13 @@ let make = (
       let response = xhr->response->Js.Nullable.toOption
       // Internet Explorer has a bug on the JSON type
       let response: option<payload> = switch (responseType, response) {
-      | (Json, Some(response)) when Js.typeof(response) == "string" =>
+      | (Json, Some(response)) if Js.typeof(response) == "string" =>
         try {
           Some(Js.Json.parseExn(xhr->responseText)->Obj.magic)
         } catch {
         | _ => None
         }
-      | (JsonAsAny, Some(response)) when Js.typeof(response) == "string" =>
+      | (JsonAsAny, Some(response)) if Js.typeof(response) == "string" =>
         try {
           Some(Js.Json.parseExn(xhr->responseText)->Obj.magic)
         } catch {
