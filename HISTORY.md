@@ -1,3 +1,9 @@
+# 3.0.0
+
+Changes:
+
+- Upgrade to ReScript (624e3ad)
+
 # 2.0.0
 
 Changes:
