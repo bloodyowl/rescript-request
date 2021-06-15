@@ -13,6 +13,7 @@ type error = [#NetworkRequestFailed | #Timeout]
 type method = [#GET | #POST | #OPTIONS | #PATCH | #PUT | #DELETE]
 
 type xhr
+external asXhr: 'a => xhr = "%identity"
 
 type response<'a> = {
   status: int,
