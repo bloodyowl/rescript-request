@@ -1,3 +1,9 @@
+# 3.0.1
+
+Features:
+
+- Add a way to mock XHR (be1fe2b)
+
 # 3.0.0
 
 Changes:
