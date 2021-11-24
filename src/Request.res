@@ -21,7 +21,7 @@ type progressEvent = {
 
 module XMLHttpRequest = {
   type t<'input, 'responseType>
-  @new external make: unit => t<'input, 'responseType> = "XMLHttpRequest"
+  @new @module("xhr2") external make: unit => t<'input, 'responseType> = "XMLHttpRequest"
   @send
   external \"open": (t<'input, 'responseType>, method, string, @as(json`true`) _) => unit = "open"
   @set
